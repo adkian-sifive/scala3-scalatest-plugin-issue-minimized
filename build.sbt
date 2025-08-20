@@ -2,23 +2,20 @@ import Dependencies.*
 
 ThisBuild / version := "0.0.1-SNAPSHOT"
 ThisBuild / sbtPlugin := false
-ThisBuild / organization := "io.mattmoore.scala.compiler.plugins"
+ThisBuild / organization := "debug-plugin-org"
 
 lazy val root = (project in file("."))
   .aggregate(
-    divisionByZeroPlugin,
-    inspectorPlugin
+    debugPlugin,
   )
   .settings(
-    crossScalaVersions := List(scala2Version, scala3Version),
+    crossScalaVersions := List(scala3Version),
     publish / skip := true
   )
 
-lazy val divisionByZeroPlugin = project in file("plugins/division-by-zero")
-lazy val inspectorPlugin = project in file("plugins/inspector")
+lazy val debugPlugin = project in file("plugins/debug")
 
-lazy val useDivisionByZero = project in file("use-plugins/division-by-zero")
-lazy val useInspector = project in file("use-plugins/inspector")
+lazy val usePlugin = project in file("use-plugins/debug")
 
 resolvers += Resolver.mavenLocal
 
