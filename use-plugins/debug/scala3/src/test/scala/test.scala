@@ -7,7 +7,9 @@ class One {
   val one = 1
 }
 
-abstract class Okable // Record
+abstract class Okable { // Record
+  def _doNothing: Unit = println("Nothing")
+} 
 
 abstract class SomeClass extends Okable // Bundle
 
