@@ -15,15 +15,11 @@ abstract class SomeClass extends Okable // Bundle
 
 class SomeChildClass extends SomeClass // BadSeqBundle
 
-object ChildContainer { // IO
-  def apply[T](gen: => T): T = gen
-}
-
 class WrapperSpec extends AnyFlatSpec with Matchers {
   "Wrapping types" should "work" in {
-    val sc = ChildContainer(new SomeClass {
+    val sc = new SomeClass {
       val scc = new SomeChildClass
-    })
+    }
   }
 }
 
